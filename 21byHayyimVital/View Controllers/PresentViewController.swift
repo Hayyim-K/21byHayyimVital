@@ -41,7 +41,20 @@ class PresentViewController: UIViewController {
         }
     }
     
-    
+    private func checkNames(of  players: [Player]) -> [Player] {
+        var updatePlayers = players
+        for i in 0..<updatePlayers.count {
+            let k = i + 1
+            for j in k..<updatePlayers.count {
+                if k < updatePlayers.count {
+                    if updatePlayers[i].name == updatePlayers[j].name {
+                        updatePlayers[j].name += " \(i)"
+                    }
+                }
+            }
+        }
+        return updatePlayers
+    }
     
     @IBAction func numberOfPlayersSliderValueHasChanged(_ sender: Any) {
         numbersOfPlayers = Int(numberOfPlayersSlider.value)
@@ -67,8 +80,19 @@ class PresentViewController: UIViewController {
             }
         }
         players.removeLast(players.count - numbersOfPlayers)
-        delegate.startTheGame(with: players)
-        dismiss(animated: true)
+        
+        let names = players.map({ $0.name }).sorted()
+        let namesSet = Set(names).sorted()
+        if names != namesSet {
+            showSameNameAlert(
+                title: "ATTANTION",
+                message: "Player names must not match!",
+                players: players)
+        } else {
+            let updatePlayers = checkNames(of: players)
+            delegate.startTheGame(with: updatePlayers)
+            dismiss(animated: true)
+        }
     }
     
 }
@@ -94,6 +118,25 @@ extension PresentViewController {
             textField?.text = nil
         }
         alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+    private func showSameNameAlert(title: String,
+                                   message: String,
+                                   players: [Player]) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Don't care", style: .default) { _ in
+            let updatePlayers = self.checkNames(of: players)
+            self.delegate.startTheGame(with: updatePlayers)
+            self.dismiss(animated: true)
+        }
+        let noAction = UIAlertAction(title: "Change", style: .cancel) { _ in
+            return
+        }
+        alert.addAction(okAction)
+        alert.addAction(noAction)
         present(alert, animated: true)
     }
 }
