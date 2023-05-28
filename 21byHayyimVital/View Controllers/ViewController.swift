@@ -38,6 +38,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.isHidden = true
         preparetion()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -81,6 +82,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         let endVC = self.storyboard?.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
         endVC.delegate = self
         endVC.modalPresentationStyle = .overCurrentContext
+        // следующие три строки кажется никак не влияют на итог... разобраться для чего они
         endVC.providesPresentationContextTransitionStyle = true
         endVC.definesPresentationContext = true
         endVC.modalTransitionStyle = .crossDissolve
@@ -91,7 +93,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     private func setupData() {
         
         // Оформить надлежащим образом, сделать явным ход конкретного игрока
-        
+        tableView.isHidden = false
         numberOfPlayers = players.count
         infoLabel.text = "\(players[1].name)'s turn"
         
@@ -110,6 +112,13 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
+    private func playersName() -> String {
+        let player = players[round < numberOfPlayers ? round : 0]
+        let result = "\(player.name)'s turn  \(player.countOfWins)"
+        tableView.reloadData()
+        return result
+    }
+    
     private func switchScore(secondCheck: Bool) {
         switch players[round].score {
         case 0..<21:
@@ -121,22 +130,22 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             
         case 21:
             round += 1
-            infoLabel.text = "\(players[round < numberOfPlayers ? round : 0].name)'s turn"
+            infoLabel.text = playersName()
             tableView.reloadData()
         case 22:
             if players[round].currentHand.count == 2 {
                 round += 1
-                infoLabel.text = "\(players[round < numberOfPlayers ? round : 0].name)'s turn"
+                infoLabel.text = playersName()
                 tableView.reloadData()
             } else {
                 round += 1
-                infoLabel.text = "\(players[round < numberOfPlayers ? round : 0].name)'s turn"
+                infoLabel.text = playersName()
                 tableView.reloadData()
             }
         default:
             round += 1
             tableView.reloadData()
-            infoLabel.text = "\(players[round < numberOfPlayers ? round : 0].name)'s turn"
+            infoLabel.text = playersName()
         }
     }
     
@@ -144,7 +153,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     @IBAction func enoughButtonHasPressed() {
         round += 1
-        infoLabel.text = "\(players[round < numberOfPlayers ? round : 0].name)'s turn"
+        infoLabel.text = playersName()
         //        if round >= numberOfPlayers {
         //        }
     }
@@ -152,7 +161,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     @IBAction func moreButtonHasPressed() {
         
         if round < numberOfPlayers {
-            infoLabel.text = "\(players[round < numberOfPlayers ? round : 0].name)'s turn"
+            infoLabel.text = playersName()
             switchScore(secondCheck: false)
             
         } else {
@@ -169,14 +178,13 @@ class ViewController: UIViewController, UICollectionViewDelegate {
                 tableView.reloadData()
                 showEndView()
                 
-                // У компа тоже может быть два туза!!!
             case 21:
                 infoLabel.text = "Computer WIN!"
                 tableView.reloadData()
                 showEndView()
                 
             default:
-                infoLabel.text = "Computer: GAME OVER!"
+                infoLabel.text = "Computer: BUST!"
                 tableView.reloadData()
                 showEndView()
                 
@@ -201,12 +209,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath) as? CollectionTableViewCell else {
             fatalError()
         }
+        
         if indexPath.row == round {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         }
-        
-        
-        
         
         cell.collectionView.delegate = self
         cell.collectionView.reloadData()

@@ -37,12 +37,12 @@ class GameOverViewController: UIViewController {
             if playerIsWinner(sortedPlayers[index]) {
                 
                 // поправить так, чтоб влезло и читалось
-                label.text = "TT"
+                label.text = "2xACE(+3)"
             } else {
-                label.text = "BUST"
+                label.text = "BUST(-1)"
             }
         case 21:
-            label.text = "WIN"
+            label.text = "WIN(+1)"
         default:
             label.text = "\(sortedPlayers[index].score)"
         }
@@ -68,27 +68,30 @@ class GameOverViewController: UIViewController {
         for index in 0..<sortedPlayers.count {
             if sortedPlayers[index].score <= 21 || playerIsWinner(sortedPlayers[index]) {
                 if playerIsWinner(sortedPlayers[index]) {
-                   
+                    
                     sortedPlayers[index].countOfWins += 3
                     synchronizer(sortedPlayers[index], add: 3)
-                    } else {
-                        if i == 0 {
+                } else {
+                    if i == 0 {
+                        sortedPlayers[index].countOfWins += 1
+                        synchronizer(sortedPlayers[index], add: 1)
+                        i += 1
+                    } else if i == 1 {
+                        if sortedPlayers[index].score == sortedPlayers[index - 1].score {
                             sortedPlayers[index].countOfWins += 1
                             synchronizer(sortedPlayers[index], add: 1)
+                        } else {
                             i += 1
-                        } else if i == 1 {
-                            if sortedPlayers[index].score == sortedPlayers[index - 1].score {
-                                sortedPlayers[index].countOfWins += 1
-                                synchronizer(sortedPlayers[index], add: 1)
-                            } else {
-                                i += 1
-                            }
                         }
                     }
                 }
+            } else {
+                sortedPlayers[index].countOfWins -= 1
+                synchronizer(sortedPlayers[index], add: -1)
             }
-        sortedPlayers.sort(by: {$0.countOfWins > $1.countOfWins})
         }
+        sortedPlayers.sort(by: {$0.countOfWins > $1.countOfWins})
+    }
     
     
     // - MARK: IBActions
@@ -117,10 +120,6 @@ extension GameOverViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         sortedPlayers.count
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

@@ -7,8 +7,6 @@
 
 import UIKit
 
-// Сделать ЧТОБЫ МОЖНО БЫЛО СКРЫТЬ КЛАВИАТУРУ ТАПОМ ПО ЭКРАНУ
-
 class PresentViewController: UIViewController {
     
     @IBOutlet weak var presentView: UIView!
@@ -57,6 +55,7 @@ class PresentViewController: UIViewController {
     }
     
     @IBAction func numberOfPlayersSliderValueHasChanged(_ sender: Any) {
+        numberOfPlayersSlider.value = roundf(numberOfPlayersSlider.value)
         numbersOfPlayers = Int(numberOfPlayersSlider.value)
         numberOfPlayersLabel.text = "\(numbersOfPlayers)"
         hideAndShowTextFiedls(textFields: namesOfPlayersTextFields, numOfPlayers: numbersOfPlayers)
@@ -99,7 +98,6 @@ class PresentViewController: UIViewController {
 
 // - MARK: Text Field Delegate
 extension PresentViewController: UITextFieldDelegate {
-    // Спрятать клавиатуру при нажатии на view (на пустое место)
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
