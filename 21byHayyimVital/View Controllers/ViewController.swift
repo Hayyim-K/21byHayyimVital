@@ -30,7 +30,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     // - MARK: Private Properties
     
     private var cardDeck = Card.getCardDeck()
-    private var players = [Player(name: "Computer", score: 0, currentHand: [], countOfWins: 0)]
+    private var players = [Player(name: "🤖", score: 0, currentHand: [], countOfWins: 0)]
     private var numberOfPlayers = 1
     private var round = 1
     
@@ -98,7 +98,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         infoLabel.text = "\(players[1].name)'s turn"
         
         for index in 0..<players.count {
-            if players[index].name != "Computer" {
+            if players[index].name != "🤖" {
                 getCard(for: players[index].name)
                 getCard(for: players[index].name)
             }
@@ -114,7 +114,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     private func playersName() -> String {
         let player = players[round < numberOfPlayers ? round : 0]
-        let result = "\(player.name)'s turn  \(player.countOfWins)"
+        let result = "\(player.name)'s turn  (\(player.countOfWins))"
         tableView.reloadData()
         return result
     }
@@ -154,8 +154,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     @IBAction func enoughButtonHasPressed() {
         round += 1
         infoLabel.text = playersName()
-        //        if round >= numberOfPlayers {
-        //        }
     }
     
     @IBAction func moreButtonHasPressed() {
@@ -165,26 +163,25 @@ class ViewController: UIViewController, UICollectionViewDelegate {
             switchScore(secondCheck: false)
             
         } else {
-//            !!!! поднять экран после начала раунда
-            tableView.scrollsToTop = true
+            tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
             
             while players[0].score < 17 {
-                getCard(for: "Computer")
+                getCard(for: "🤖")
                 tableView.reloadData()
             }
             switch players[0].score {
             case 17...20:
-                infoLabel.text = "Computer has \(players[0].score)!"
+                infoLabel.text = "🤖 has \(players[0].score)!"
                 tableView.reloadData()
                 showEndView()
                 
             case 21:
-                infoLabel.text = "Computer WIN!"
+                infoLabel.text = "🤖 WIN!"
                 tableView.reloadData()
                 showEndView()
                 
             default:
-                infoLabel.text = "Computer: BUST!"
+                infoLabel.text = "🤖 BUST!"
                 tableView.reloadData()
                 showEndView()
                 
@@ -211,7 +208,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if indexPath.row == round {
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         }
         
         cell.collectionView.delegate = self
@@ -248,8 +245,8 @@ extension ViewController: GameOverViewControllerDelegate {
         self.cardDeck = cardDeck
         self.players = players
         round = 1
-        getCard(for: "Computer")
-        getCard(for: "Computer")
+        getCard(for: "🤖")
+        getCard(for: "🤖")
         setupData()
     }
 }

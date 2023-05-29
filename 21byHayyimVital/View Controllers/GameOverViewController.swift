@@ -35,8 +35,6 @@ class GameOverViewController: UIViewController {
         switch sortedPlayers[index].score {
         case 22...:
             if playerIsWinner(sortedPlayers[index]) {
-                
-                // поправить так, чтоб влезло и читалось
                 label.text = "2xACE(+3)"
             } else {
                 label.text = "BUST(-1)"

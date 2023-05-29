@@ -42,6 +42,9 @@ class PresentViewController: UIViewController {
     private func checkNames(of  players: [Player]) -> [Player] {
         var updatePlayers = players
         for i in 0..<updatePlayers.count {
+            if updatePlayers[i].name == "🤖" {
+                updatePlayers[i].name += " \(i)"
+            }
             let k = i + 1
             for j in k..<updatePlayers.count {
                 if k < updatePlayers.count {
@@ -82,7 +85,7 @@ class PresentViewController: UIViewController {
         
         let names = players.map({ $0.name }).sorted()
         let namesSet = Set(names).sorted()
-        if names != namesSet {
+        if names != namesSet || names.contains(where: {$0 == "🤖"}) {
             showSameNameAlert(
                 title: "ATTANTION",
                 message: "Player names must not match!",
