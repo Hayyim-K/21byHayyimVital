@@ -26,16 +26,13 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     // - MARK: Global Properties
     
-    
     // - MARK: Private Properties
-    
     private var cardDeck = Card.getCardDeck()
     private var players = [Player(name: "🤖", score: 0, currentHand: [], countOfWins: 0)]
     private var numberOfPlayers = 1
     private var round = 1
     
     // - MARK: Override funcs
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isHidden = true
@@ -47,7 +44,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     
     // - MARK: Private funcs
-    
     private func preparetion() {
         for index in 0..<players.count {
             getCard(for: players[index].name)
@@ -91,8 +87,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func setupData() {
-        
-        // Оформить надлежащим образом, сделать явным ход конкретного игрока
         tableView.isHidden = false
         numberOfPlayers = players.count
         infoLabel.text = "\(players[1].name)'s turn"
@@ -186,9 +180,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
                 showEndView()
                 
             }
-            
         }
-        
     }
 }
 
@@ -208,7 +200,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if indexPath.row == round {
-                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
         }
         
         cell.collectionView.delegate = self
@@ -230,8 +222,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-
 
 extension ViewController: PresentViewControllerDelegate {
     func startTheGame(with players: [Player]) {

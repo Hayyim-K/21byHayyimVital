@@ -8,10 +8,9 @@
 import UIKit
 
 class EndTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var countOfWinsLabel: UILabel!
     
-
 }

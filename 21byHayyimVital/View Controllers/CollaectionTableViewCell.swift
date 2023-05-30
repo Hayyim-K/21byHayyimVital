@@ -23,7 +23,7 @@ class CollectionTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -47,16 +47,10 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             cell.image.image = UIImage(named: "back")
         } else {
             let imageName = playersHand[indexPath.row].image
-                    cell.image.image = UIImage(named: imageName)
+            cell.image.image = UIImage(named: imageName)
         }
         
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width: CGFloat = contentView.frame.size.width/2.5
-//        return CGSize(width: width, height: width/1.1)
-//    }
-    
 }
-    
+

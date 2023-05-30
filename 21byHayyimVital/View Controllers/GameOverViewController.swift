@@ -10,7 +10,6 @@ import UIKit
 class GameOverViewController: UIViewController {
     
     // - MARK: Outlets
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mainView: UIView!
     
@@ -91,7 +90,6 @@ class GameOverViewController: UIViewController {
         sortedPlayers.sort(by: {$0.countOfWins > $1.countOfWins})
     }
     
-    
     // - MARK: IBActions
     @IBAction func playAgainButtonPressed(_ sender: Any) {
         for index in 0..<players.count {
@@ -106,8 +104,6 @@ class GameOverViewController: UIViewController {
     @IBAction func quitButtonPressed(_ sender: Any) {
         exit(0)
     }
-    
-    
 }
 
 // - MARK: Extensions
@@ -119,11 +115,32 @@ extension GameOverViewController: UITableViewDelegate, UITableViewDataSource {
         sortedPlayers.count
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(
+            frame: CGRect(
+                origin: .zero,
+                size: CGSize(
+                    width: tableView.frame.width,
+                    height: 17
+                )
+            )
+        )
+        let label = UILabel(frame: headerView.bounds)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = "Name: /Current Result: /Total:"
+        headerView.addSubview(label)
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! EndTableViewCell
-        set(cell.scoreLabel, by: indexPath.row)
         let player = sortedPlayers[indexPath.row]
+        set(cell.scoreLabel, by: indexPath.row)
         cell.playerNameLabel.text = player.name
         cell.countOfWinsLabel.text = "\(player.countOfWins)"
         return cell
