@@ -24,10 +24,10 @@ class CollectionTableViewCell: UITableViewCell {
         collectionView.delegate = self
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//    }
     
     
 }
@@ -46,8 +46,10 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         if collectionView.tag == 0 && indexPath.row == 1 && computersSecondCardChecker > 0  {
             cell.image.image = UIImage(named: "back")
         } else {
-            let imageName = playersHand[indexPath.row].image
-            cell.image.image = UIImage(named: imageName)
+            cell.image.fatchImage(from: playersHand[indexPath.row].image)
+//            collectionView.reloadData()
+//            let imageName = playersHand[indexPath.row].image
+//            cell.image.image = UIImage(named: imageName)
         }
         
         return cell

@@ -9,5 +9,9 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var image: CardImageView! {
+        didSet {
+            image.layer.cornerRadius = image.bounds.height / 33
+        }
+    }
 }
