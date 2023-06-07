@@ -24,7 +24,6 @@
 		6FCFFE362A09632800DB5872 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFFE352A09632800DB5872 /* Models.swift */; };
 		6FCFFE3A2A096B5100DB5872 /* CollaectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFFE392A096B5100DB5872 /* CollaectionTableViewCell.swift */; };
 		6FCFFE3C2A09772600DB5872 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFFE3B2A09772500DB5872 /* CollectionViewCell.swift */; };
-		6FD028542A2B4E0200B28E00 /* XXXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD028532A2B4E0200B28E00 /* XXXViewController.swift */; };
 		6FDD222C2A16AEFA00846510 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDD222B2A16AEFA00846510 /* GameOverViewController.swift */; };
 		6FDD22322A192BDB00846510 /* EndTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDD22312A192BDB00846510 /* EndTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +44,6 @@
 		6FCFFE352A09632800DB5872 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		6FCFFE392A096B5100DB5872 /* CollaectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaectionTableViewCell.swift; sourceTree = "<group>"; };
 		6FCFFE3B2A09772500DB5872 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		6FD028532A2B4E0200B28E00 /* XXXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XXXViewController.swift; sourceTree = "<group>"; };
 		6FDD222B2A16AEFA00846510 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		6FDD22312A192BDB00846510 /* EndTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,7 +137,6 @@
 				6F2B87942A0C3418008D6AEC /* PresentViewController.swift */,
 				6FCFFE252A095BBA00DB5872 /* ViewController.swift */,
 				6FDD222B2A16AEFA00846510 /* GameOverViewController.swift */,
-				6FD028532A2B4E0200B28E00 /* XXXViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -239,7 +236,6 @@
 				6F2B87952A0C3418008D6AEC /* PresentViewController.swift in Sources */,
 				6FCFFE222A095BBA00DB5872 /* AppDelegate.swift in Sources */,
 				6FCFFE3C2A09772600DB5872 /* CollectionViewCell.swift in Sources */,
-				6FD028542A2B4E0200B28E00 /* XXXViewController.swift in Sources */,
 				6FDD222C2A16AEFA00846510 /* GameOverViewController.swift in Sources */,
 				6FCFFE242A095BBA00DB5872 /* SceneDelegate.swift in Sources */,
 				6FCFFE362A09632800DB5872 /* Models.swift in Sources */,

@@ -9,17 +9,17 @@ import UIKit
 
 class GameOverViewController: UIViewController {
     
-    // - MARK: Outlets
+    // - MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mainView: UIView!
     
-    // - MARK: Properties
+    // - MARK: - Properties
     var players: [Player]!
     var delegate: GameOverViewControllerDelegate!
     
-    var sortedPlayers = [Player]()
+    private var sortedPlayers = [Player]()
     
-    // - MARK: Override funcs
+    // - MARK: - Override funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         shadowSort()
@@ -29,7 +29,7 @@ class GameOverViewController: UIViewController {
         
     }
     
-    // - MARK: Private funcs
+    // - MARK: - Private funcs
     private func set(_ label: UILabel, by index: Int) {
         switch sortedPlayers[index].score {
         case 22...:
@@ -65,7 +65,6 @@ class GameOverViewController: UIViewController {
         for index in 0..<sortedPlayers.count {
             if sortedPlayers[index].score <= 21 || playerIsWinner(sortedPlayers[index]) {
                 if playerIsWinner(sortedPlayers[index]) {
-                    
                     sortedPlayers[index].countOfWins += 3
                     synchronizer(sortedPlayers[index], add: 3)
                 } else {
@@ -90,7 +89,7 @@ class GameOverViewController: UIViewController {
         sortedPlayers.sort(by: {$0.countOfWins > $1.countOfWins})
     }
     
-    // - MARK: IBActions
+    // - MARK: - IBActions
     @IBAction func playAgainButtonPressed(_ sender: Any) {
         for index in 0..<players.count {
             players[index].currentHand = []
@@ -106,9 +105,9 @@ class GameOverViewController: UIViewController {
     }
 }
 
-// - MARK: Extensions
+// - MARK: - Extensions
 
-// - MARK: TableView Data Source
+// - MARK: - TableView Data Source
 extension GameOverViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

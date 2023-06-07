@@ -7,8 +7,7 @@
 
 import UIKit
 
-// - MARK: Protocols
-
+// - MARK: - Protocols
 protocol PresentViewControllerDelegate {
     func startTheGame(with players: [Player])
 }
@@ -19,20 +18,19 @@ protocol GameOverViewControllerDelegate {
 
 class ViewController: UIViewController, UICollectionViewDelegate {
     
-    // - MARK: Outlets
-    
+    // - MARK: - Outlets
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var enoughButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     
-    // - MARK: Global Properties
-    
-    // - MARK: Private Properties
+    // - MARK: - Private Properties
     private var cardDeck = Card.getCardDeck()
     private var players = [Player(name: "🤖", score: 0, currentHand: [], countOfWins: 0)]
     private var numberOfPlayers = 1
     private var round = 1
     
-    // - MARK: Override funcs
+    // - MARK: - Override funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.isHidden = true
@@ -43,7 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         showAlert()
     }
     
-    // - MARK: Private funcs
+    // - MARK: - Private funcs
     private func preparetion() {
         for index in 0..<players.count {
             getCard(for: players[index].name)
@@ -143,8 +141,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-    // - MARK: IBActions
-    
+    // - MARK: - IBActions
     @IBAction func enoughButtonHasPressed() {
         round += 1
         infoLabel.text = playersName()
@@ -155,10 +152,8 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         if round < numberOfPlayers {
             infoLabel.text = playersName()
             switchScore(secondCheck: false)
-            
         } else {
             tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-            
             while players[0].score < 17 {
                 getCard(for: "🤖")
                 tableView.reloadData()
@@ -185,9 +180,9 @@ class ViewController: UIViewController, UICollectionViewDelegate {
 }
 
 
-// - MARK: Extensions
+// - MARK: - Extensions
 
-// - MARK: TableView Data Source
+// - MARK: - TableView Data Source
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -223,6 +218,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// - MARK: - Delegates
 extension ViewController: PresentViewControllerDelegate {
     func startTheGame(with players: [Player]) {
         self.players += players

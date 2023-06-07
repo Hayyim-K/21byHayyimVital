@@ -9,21 +9,23 @@ import UIKit
 
 class PresentViewController: UIViewController {
     
+    // - MARK: - Outlets
     @IBOutlet weak var presentView: UIView!
-    
     @IBOutlet weak var numberOfPlayersSlider: UISlider!
     @IBOutlet weak var numberOfPlayersLabel: UILabel!
     @IBOutlet var namesOfPlayersTextFields: [UITextField]!
     
+    // - MARK: - Properties
     var delegate: PresentViewControllerDelegate!
-    
     private var numbersOfPlayers = 1
     
+    // - MARK: - Override funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
     }
     
+    // - MARK: - Private Funcs
     private func setUp() {
         presentView.layer.cornerRadius = presentView.frame.height/22
         numberOfPlayersSlider.value = 1
@@ -56,7 +58,8 @@ class PresentViewController: UIViewController {
         }
         return updatePlayers
     }
-    
+   
+    // - MARK: - IBActions
     @IBAction func numberOfPlayersSliderValueHasChanged(_ sender: Any) {
         numberOfPlayersSlider.value = roundf(numberOfPlayersSlider.value)
         numbersOfPlayers = Int(numberOfPlayersSlider.value)
@@ -99,7 +102,7 @@ class PresentViewController: UIViewController {
     
 }
 
-// - MARK: Text Field Delegate
+// - MARK: - Text Field Delegate
 extension PresentViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)

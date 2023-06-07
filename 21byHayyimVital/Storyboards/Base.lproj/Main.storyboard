@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_72" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -344,7 +344,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Duf-xV-9oN"/>
                     <connections>
+                        <outlet property="enoughButton" destination="XJF-9U-oI6" id="ILO-jU-aHa"/>
                         <outlet property="infoLabel" destination="pbH-tM-k8k" id="kLh-SD-uWP"/>
+                        <outlet property="moreButton" destination="2Ux-ao-pCu" id="QE3-Io-HOR"/>
                         <outlet property="tableView" destination="TqP-tv-CAM" id="95U-Js-FTk"/>
                     </connections>
                 </viewController>
@@ -484,36 +486,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBF-dG-tf5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="615" y="72"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="JSN-UU-ODh">
-            <objects>
-                <viewController id="yvL-0J-8bQ" customClass="XXXViewController" customModule="_1byHayyimVital" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1gK-w8-8Kp">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xsb-Xr-1p7" customClass="CardImageView" customModule="_1byHayyimVital" customModuleProvider="target">
-                                <rect key="frame" x="16" y="75" width="398" height="782"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Ac0-46-dPB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Ac0-46-dPB" firstAttribute="trailing" secondItem="xsb-Xr-1p7" secondAttribute="trailing" constant="16" id="IQj-GO-Mcr"/>
-                            <constraint firstItem="xsb-Xr-1p7" firstAttribute="centerX" secondItem="1gK-w8-8Kp" secondAttribute="centerX" id="RgE-wO-ZHH"/>
-                            <constraint firstItem="xsb-Xr-1p7" firstAttribute="top" secondItem="Ac0-46-dPB" secondAttribute="top" constant="16" id="Ujb-Pa-A19"/>
-                            <constraint firstItem="xsb-Xr-1p7" firstAttribute="leading" secondItem="Ac0-46-dPB" secondAttribute="leading" constant="16" id="Wu6-3f-0UG"/>
-                            <constraint firstItem="xsb-Xr-1p7" firstAttribute="centerY" secondItem="1gK-w8-8Kp" secondAttribute="centerY" id="mlI-eO-8kl"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="label" destination="xsb-Xr-1p7" id="CRn-pN-epZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qlb-qV-AJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1495" y="73"/>
         </scene>
     </scenes>
     <resources>
