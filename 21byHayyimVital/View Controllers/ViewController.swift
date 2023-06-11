@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 // - MARK: - Protocols
 protocol PresentViewControllerDelegate {
@@ -24,7 +25,8 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var enoughButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     
-    // - MARK: - Private Properties
+    // - MARK: - Properties
+    private var keysAndURLs = [String : URL]()
     private var cardDeck = Card.getCardDeck()
     private var players = [Player(name: "🤖", score: 0, currentHand: [], countOfWins: 0)]
     private var numberOfPlayers = 1
@@ -43,6 +45,9 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     // - MARK: - Private funcs
     private func preparetion() {
+        let cardDeckString = cardDeck.map{$0.image}
+        ImageManager.shared.fatchImages(from: cardDeckString)
+        
         for index in 0..<players.count {
             getCard(for: players[index].name)
             getCard(for: players[index].name)
@@ -50,7 +55,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func getCard(for playerName: String) {
-        print(cardDeck.count)
         let card = cardDeck.randomElement()!
         removeFromDeck(card)
         for index in 0..<players.count {
@@ -143,12 +147,16 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     // - MARK: - IBActions
     @IBAction func enoughButtonHasPressed() {
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
+        
         round += 1
         infoLabel.text = playersName()
     }
     
     @IBAction func moreButtonHasPressed() {
-        
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
+        keysAndURLs = ImageManager.shared.cardURLKeys
+
         if round < numberOfPlayers {
             infoLabel.text = playersName()
             switchScore(secondCheck: false)
@@ -173,7 +181,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
                 infoLabel.text = "🤖 BUST!"
                 tableView.reloadData()
                 showEndView()
-                
             }
         }
     }
@@ -212,6 +219,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.scoreLabel.text = "Score: \(players[indexPath.row].score)"
             cell.playersHandLabel.text = hand.map({$0.image}).joined(separator: ", ")
         }
+        cell.keys = keysAndURLs
         cell.playersHand = hand
         cell.computersSecondCardChecker = numberOfPlayers - round
         return cell

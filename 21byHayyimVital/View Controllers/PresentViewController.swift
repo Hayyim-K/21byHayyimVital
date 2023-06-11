@@ -68,7 +68,7 @@ class PresentViewController: UIViewController {
     }
     
     @IBAction func rulesButtonHasPressed(_ sender: Any) {
-        let rules = "21 is played at a table of 2-7 players and uses one 36-card deck. All number cards (6-10) score the value indicated on them. The face cards (Jack, Queen, King) score 2, 3, 4 points respectively and Ace is treated as 11. At the beginning of each round all players are dealt two cards face-up in front of their respective positions. The Computer receives two cards, one face-up and another face-down. Starting to the left of the Computer, each player is given a chance to draw more cards. The players can either ‘hit’ or ‘stand’. If the player calls out ‘HIT’, they are given an extra card. They can then either call out ‘HIT’ again, or ‘STAND’ if they do not wish to draw any more cards. The player can ‘HIT’ as many times as they wish, but have to aim not to ‘BUST’ (exceed a total of 21). If the player BUSTS, they immediately lose. After each player has played and either stood or busted, the Computer takes their turn. If the Computers’s hand exceeds 21, he loses. All players who didn't bust check their points: That plyer who has more points (<= 21) gets one winning point. If the player has Double Aces at the bigining, he get 3 winning points."
+        let rules = "21 is played at a table of 2-7 players and uses one 36-card deck. All number cards (6-10) score the value indicated on them. The face cards (Jack, Queen, King) score 2, 3, 4 points respectively and Ace is treated as 11. At the beginning of each round all players are dealt two cards face-up in front of their respective positions. The Computer receives two cards, one face-up and another face-down. Starting to the left of the Computer, each player is given a chance to draw more cards. The players can either ‘hit’ or ‘stand’. If the player calls out ‘HIT’, they are given an extra card. They can then either call out ‘HIT’ again, or ‘STAND’ if they do not wish to draw any more cards. The player can ‘HIT’ as many times as they wish, but have to aim not to ‘BUST’ (exceed a total of 21). If the player BUSTS, they immediately lose. After each player has played and either stood or busted, the Computer takes their turn. If the Computers’s hand exceeds 21, he loses. All players who didn't BUST check their points: That plyer who has more points (<= 21) gets one winning point. If the player has Double Aces at the bigining, he get 3 winning points.\nSummation:\nBUST - you lose\nJust your score - won nothing lost nothing\nWIN - you won. Get +1 point\n2xAce - you get +3 points. Rare luck!"
         showAlert(title: "RULES", message: rules)
     }
     
@@ -90,7 +90,7 @@ class PresentViewController: UIViewController {
         let namesSet = Set(names).sorted()
         if names != namesSet || names.contains(where: {$0 == "🤖"}) {
             showSameNameAlert(
-                title: "ATTANTION",
+                title: "ATTENTION",
                 message: "Player names must not match!",
                 players: players)
         } else {

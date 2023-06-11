@@ -9,7 +9,7 @@ import UIKit
 
 
 class CollectionTableViewCell: UITableViewCell {
-
+    
     // - MARK: - Outlets
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -17,6 +17,7 @@ class CollectionTableViewCell: UITableViewCell {
     @IBOutlet weak var playersHandLabel: UILabel!
     
     // - MARK: - Properties
+    var keys: [String : URL]!
     var playersHand: [Card]!
     var computersSecondCardChecker: Int!
     
@@ -40,12 +41,33 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             fatalError()
         }
         
+        
+        
+        
         if collectionView.tag == 0 && indexPath.row == 1 && computersSecondCardChecker > 0  {
             cell.image.image = UIImage(named: "back")
         } else {
-            cell.image.fatchImage(from: playersHand[indexPath.row].image)
+            //            не уверен в необходимости следующей строчки кода
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            //                  - Animation:
+//            cell.image.alpha = 0
+//            let originCoordinateX = cell.image.frame.origin.x
+//            let originCoordinateY = cell.image.frame.origin.y
+//            cell.image.frame.origin.x += 100
+//            cell.image.frame.origin.y += 200
+//            UIView.animate(withDuration: 2, delay: 0.5, options: .curveEaseInOut, animations: {
+//                cell.image.frame.origin.x = originCoordinateX
+//                cell.image.frame.origin.y = originCoordinateY
+//                cell.image.alpha = 1
+//            })
+            
+            let url = keys[playersHand[indexPath.row].image]
+            if let url = url {
+                cell.image.image = cell.image.getCachedImage(from: url)
+            } else {
+                cell.image.image = UIImage(named: playersHand[indexPath.row].image)
+            }
         }
-        
         return cell
     }
 }

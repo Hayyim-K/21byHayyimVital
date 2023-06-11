@@ -37,11 +37,6 @@ extension Card {
                 for suit in Suits.allCases {
                     cardDeck.append(Card.init(suit: suit.rawValue, value: card, image: "\(card)\(suit.rawValue)"))
                 }
-                
-//                cardDeck.append(Card.init(suit: Suits.club.rawValue, value: card, image: "\(card)\(Suits.club.rawValue)"))
-//                cardDeck.append(Card.init(suit: Suits.diamond.rawValue, value: card, image: "\(card)\(Suits.diamond.rawValue)"))
-//                cardDeck.append(Card.init(suit: Suits.heart.rawValue, value: card, image: "\(card)\(Suits.heart.rawValue)"))
-//                cardDeck.append(Card.init(suit: Suits.spade.rawValue, value: card, image: "\(card)\(Suits.spade.rawValue)"))
             }
         }
         
