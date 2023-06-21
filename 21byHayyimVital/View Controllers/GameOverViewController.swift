@@ -22,6 +22,7 @@ class GameOverViewController: UIViewController {
     // - MARK: - Override funcs
     override func viewDidLoad() {
         super.viewDidLoad()
+        UISelectionFeedbackGenerator().selectionChanged()
         shadowSort()
         tableView.delegate = self
         tableView.dataSource = self
@@ -91,6 +92,7 @@ class GameOverViewController: UIViewController {
     
     // - MARK: - IBActions
     @IBAction func playAgainButtonPressed(_ sender: Any) {
+        UISelectionFeedbackGenerator().selectionChanged()
         for index in 0..<players.count {
             players[index].currentHand = []
             players[index].score = 0
@@ -101,6 +103,7 @@ class GameOverViewController: UIViewController {
     }
     
     @IBAction func quitButtonPressed(_ sender: Any) {
+        UISelectionFeedbackGenerator().selectionChanged()
         exit(0)
     }
 }

@@ -147,20 +147,20 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     
     // - MARK: - IBActions
     @IBAction func enoughButtonHasPressed() {
-        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
-        
+        UISelectionFeedbackGenerator().selectionChanged()
         round += 1
         infoLabel.text = playersName()
     }
     
     @IBAction func moreButtonHasPressed() {
-        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
+        UISelectionFeedbackGenerator().selectionChanged()
         keysAndURLs = ImageManager.shared.cardURLKeys
 
         if round < numberOfPlayers {
             infoLabel.text = playersName()
             switchScore(secondCheck: false)
         } else {
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
             tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
             while players[0].score < 17 {
                 getCard(for: "🤖")

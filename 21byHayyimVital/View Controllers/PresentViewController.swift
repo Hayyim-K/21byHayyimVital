@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class PresentViewController: UIViewController {
     
@@ -29,7 +30,6 @@ class PresentViewController: UIViewController {
     // - MARK: - Private Funcs
     private func setUp() {
         presentView.layer.cornerRadius = presentView.frame.height/22
-        
         pulsate()
         numberOfPlayersSlider.value = 1
         numberOfPlayersLabel.text = "\(Int(numberOfPlayersSlider.value))"
@@ -99,6 +99,7 @@ class PresentViewController: UIViewController {
     }
     
     @IBAction func startButtonHasPressed(_ sender: Any) {
+        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
         var players = [Player]()
         for name in namesOfPlayersTextFields {
             if let playersName = name.text {
@@ -115,6 +116,7 @@ class PresentViewController: UIViewController {
         let names = players.map({ $0.name }).sorted()
         let namesSet = Set(names).sorted()
         if names != namesSet || names.contains(where: {$0 == "🤖"}) {
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
             showSameNameAlert(
                 title: "ATTENTION",
                 message: "Player names must not match!",
