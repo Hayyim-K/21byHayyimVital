@@ -47,7 +47,6 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         if collectionView.tag == 0 && indexPath.row == 1 && computersSecondCardChecker > 0  {
             cell.image.image = UIImage(named: "back")
         } else {
-            //            не уверен в необходимости следующей строчки кода
                 collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             //                  - Animation:
 //            cell.image.alpha = 0

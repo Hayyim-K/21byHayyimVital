@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_72" orientation="portrait" appearance="dark"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -156,6 +157,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NwU-IQ-9IM"/>
                         <color key="backgroundColor" white="0.25" alpha="0.78197433774834435" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="t1t-YS-iCs" firstAttribute="centerX" secondItem="9Zx-op-HAN" secondAttribute="centerX" id="5yi-mU-mad"/>
                             <constraint firstItem="t1t-YS-iCs" firstAttribute="centerY" secondItem="9Zx-op-HAN" secondAttribute="centerY" id="FFA-ys-nzE"/>
@@ -167,6 +169,7 @@
                         <outlet property="numberOfPlayersLabel" destination="Ukq-Tp-PtV" id="BaI-ZR-XrN"/>
                         <outlet property="numberOfPlayersSlider" destination="25N-yC-8cX" id="U2m-ly-Ebc"/>
                         <outlet property="presentView" destination="t1t-YS-iCs" id="vpB-OD-GzI"/>
+                        <outlet property="rulseButton" destination="azw-PL-UMy" id="mh8-vZ-dI8"/>
                         <outletCollection property="namesOfPlayersTextFields" destination="a5k-3s-3yX" collectionClass="NSMutableArray" id="fi2-le-67K"/>
                         <outletCollection property="namesOfPlayersTextFields" destination="c1Y-jS-XHT" collectionClass="NSMutableArray" id="719-R5-64n"/>
                         <outletCollection property="namesOfPlayersTextFields" destination="S6a-uk-WXZ" collectionClass="NSMutableArray" id="4JM-oG-3yH"/>
@@ -178,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIb-nq-U3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-956" y="71"/>
+            <point key="canvasLocation" x="-957.20930232558135" y="70.815450643776828"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -194,7 +197,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJF-9U-oI6">
                                         <rect key="frame" x="0.0" y="0.0" width="183" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="ENOUGH"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="🫸"/>
                                         <connections>
                                             <action selector="enoughButtonHasPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="NQS-Pw-edc"/>
                                         </connections>
@@ -202,7 +205,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ux-ao-pCu">
                                         <rect key="frame" x="215" y="0.0" width="183" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="MORE"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="🫴"/>
                                         <connections>
                                             <action selector="moreButtonHasPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="kZl-dZ-MQ1"/>
                                         </connections>
@@ -211,6 +214,7 @@
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 by Hayyim Vital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbH-tM-k8k">
                                 <rect key="frame" x="16" y="59" width="398" height="33.666666666666657"/>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.26969068874217683" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -265,8 +269,8 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="170" height="216"/>
                                                                         <color key="backgroundColor" red="0.098039215690000001" green="0.33333333329999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="171" id="1BY-9R-yeq"/>
-                                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="216" id="hO4-oP-QVn"/>
+                                                                            <constraint firstAttribute="width" constant="172" id="1BY-9R-yeq"/>
+                                                                            <constraint firstAttribute="height" constant="215" id="hO4-oP-QVn"/>
                                                                         </constraints>
                                                                         <imageReference key="image" image="back" symbolScale="large"/>
                                                                     </imageView>
@@ -485,7 +489,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBF-dG-tf5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="615" y="72"/>
+            <point key="canvasLocation" x="572" y="72"/>
         </scene>
     </scenes>
     <resources>

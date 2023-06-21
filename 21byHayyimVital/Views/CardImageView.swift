@@ -33,28 +33,6 @@ class CardImageView: UIImageView {
         }
     }
     
-    // - MARK: - Animation
-    func pulsate() {
-        let alpha = CASpringAnimation(keyPath: "opacity")
-        alpha.fromValue = 0
-        alpha.toValue = 1
-        alpha.duration = 3
-        //        alpha.damping = 1
-        
-        
-        let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.fromValue = 0.95
-        pulse.toValue = 1
-        pulse.duration = 0.6
-        pulse.autoreverses = true
-        pulse.repeatCount = 2
-        pulse.initialVelocity = 0.5
-        pulse.damping = 1
-        
-        layer.add(pulse, forKey: nil)
-        layer.add(alpha, forKey: nil)
-    }
-    
     // - MARK: - Cache methods
     func getCachedImage(from url: URL) -> UIImage? {
         let urlRequest = URLRequest(url: url)

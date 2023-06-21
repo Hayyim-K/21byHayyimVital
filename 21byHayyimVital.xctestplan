@@ -1,0 +1,23 @@
+{
+  "configurations" : [
+    {
+      "id" : "7933941B-D5C6-49DB-92C0-EBB5847CB57C",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:21byHayyimVital.xcodeproj",
+      "identifier" : "6FCFFE1D2A095BBA00DB5872",
+      "name" : "21byHayyimVital"
+    }
+  },
+  "testTargets" : [
+
+  ],
+  "version" : 1
+}

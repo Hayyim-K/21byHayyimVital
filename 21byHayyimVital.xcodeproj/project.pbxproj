@@ -33,6 +33,7 @@
 		6F5C1DE52A269F3400A9DE01 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		6F5C1DE72A26A35D00A9DE01 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		6F5C1DEB2A26B39500A9DE01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6F6A71AA2A422FB700407E54 /* 21byHayyimVital.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = 21byHayyimVital.xctestplan; sourceTree = "<group>"; };
 		6FCFFE1E2A095BBA00DB5872 /* 21byHayyimVital.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 21byHayyimVital.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCFFE212A095BBA00DB5872 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FCFFE232A095BBA00DB5872 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		6FCFFE152A095BB900DB5872 = {
 			isa = PBXGroup;
 			children = (
+				6F6A71AA2A422FB700407E54 /* 21byHayyimVital.xctestplan */,
 				6FCFFE202A095BBA00DB5872 /* 21byHayyimVital */,
 				6FCFFE1F2A095BBA00DB5872 /* Products */,
 			);
@@ -399,6 +401,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,6 +434,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
