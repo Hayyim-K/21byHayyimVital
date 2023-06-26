@@ -65,29 +65,6 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-    private func showAlert() {
-        let presentVC = self.storyboard?.instantiateViewController(withIdentifier: "PresentViewController") as! PresentViewController
-        presentVC.delegate = self
-        presentVC.modalPresentationStyle = .overCurrentContext
-        // следующие три строки кажется никак не влияют на итог... разобраться для чего они
-        presentVC.providesPresentationContextTransitionStyle = true
-        presentVC.definesPresentationContext = true
-        presentVC.modalTransitionStyle = .crossDissolve
-        present(presentVC, animated: true,  completion: nil)
-    }
-    
-    private func showEndView() {
-        let endVC = self.storyboard?.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
-        endVC.delegate = self
-        endVC.modalPresentationStyle = .overCurrentContext
-        // следующие три строки кажется никак не влияют на итог... разобраться для чего они
-        endVC.providesPresentationContextTransitionStyle = true
-        endVC.definesPresentationContext = true
-        endVC.modalTransitionStyle = .crossDissolve
-        endVC.players = players
-        present(endVC, animated: true,  completion: nil)
-    }
-    
     private func setupData() {
         tableView.isHidden = false
         numberOfPlayers = players.count
@@ -145,17 +122,8 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
-    // - MARK: - IBActions
-    @IBAction func enoughButtonHasPressed() {
-        UISelectionFeedbackGenerator().selectionChanged()
-        round += 1
-        infoLabel.text = playersName()
-    }
-    
-    @IBAction func moreButtonHasPressed() {
-        UISelectionFeedbackGenerator().selectionChanged()
+    private func hitAction() {
         keysAndURLs = ImageManager.shared.cardURLKeys
-
         if round < numberOfPlayers {
             infoLabel.text = playersName()
             switchScore(secondCheck: false)
@@ -183,6 +151,24 @@ class ViewController: UIViewController, UICollectionViewDelegate {
                 showEndView()
             }
         }
+    }
+    
+    // - MARK: - IBActions
+    @IBAction func enoughButtonHasPressed() {
+        UISelectionFeedbackGenerator().selectionChanged()
+        round += 1
+        infoLabel.text = playersName()
+    }
+    
+    @IBAction func moreButtonHasPressed() {
+        UISelectionFeedbackGenerator().selectionChanged()
+        let player = players[round < numberOfPlayers ? round : 0]
+        if player.score >= 17 && player.name != "🤖" {
+            showScoreAlert(title: "You already have \(player.score)!", message: "Are you sure you want to continue?")
+        } else {
+            hitAction()
+        }
+        
     }
 }
 
@@ -242,6 +228,47 @@ extension ViewController: GameOverViewControllerDelegate {
         getCard(for: "🤖")
         getCard(for: "🤖")
         setupData()
+    }
+}
+
+// MARK: - Alert Controller
+extension ViewController {
+    private func showAlert() {
+        let presentVC = self.storyboard?.instantiateViewController(withIdentifier: "PresentViewController") as! PresentViewController
+        presentVC.delegate = self
+        presentVC.modalPresentationStyle = .overCurrentContext
+        // следующие три строки кажется никак не влияют на итог... разобраться для чего они
+        presentVC.providesPresentationContextTransitionStyle = true
+        presentVC.definesPresentationContext = true
+        presentVC.modalTransitionStyle = .crossDissolve
+        present(presentVC, animated: true,  completion: nil)
+    }
+    
+    private func showEndView() {
+        let endVC = self.storyboard?.instantiateViewController(withIdentifier: "GameOverViewController") as! GameOverViewController
+        endVC.delegate = self
+        endVC.modalPresentationStyle = .overCurrentContext
+        // следующие три строки кажется никак не влияют на итог... разобраться для чего они
+        endVC.providesPresentationContextTransitionStyle = true
+        endVC.definesPresentationContext = true
+        endVC.modalTransitionStyle = .crossDissolve
+        endVC.players = players
+        present(endVC, animated: true,  completion: nil)
+    }
+    
+    private func showScoreAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Continue", style: .default) { _ in
+            self.hitAction()
+        }
+        let noAction = UIAlertAction(title: "Enough", style: .cancel) { _ in
+            self.enoughButtonHasPressed()
+        }
+        alert.addAction(okAction)
+        alert.addAction(noAction)
+        present(alert, animated: true)
     }
 }
 
