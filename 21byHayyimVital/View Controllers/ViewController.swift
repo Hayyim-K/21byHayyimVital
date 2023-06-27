@@ -40,6 +40,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        keysAndURLs = ImageManager.shared.cardURLKeys
         showAlert()
     }
     
@@ -123,7 +124,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     }
     
     private func hitAction() {
-        keysAndURLs = ImageManager.shared.cardURLKeys
+        
         if round < numberOfPlayers {
             infoLabel.text = playersName()
             switchScore(secondCheck: false)
@@ -164,7 +165,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         UISelectionFeedbackGenerator().selectionChanged()
         let player = players[round < numberOfPlayers ? round : 0]
         if player.score >= 17 && player.name != "🤖" {
-            showScoreAlert(title: "You already have \(player.score)!", message: "Are you sure you want to continue?")
+            showScoreAlert(title: "\(player.name)!", message: "You already have \(player.score)!\nAre you sure you want to continue?")
         } else {
             hitAction()
         }
@@ -189,13 +190,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == round {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+            pulsate(for: cell.playerNameLabel)
+        } else {
+            cell.playerNameLabel.layer.removeAllAnimations()
         }
         
         cell.collectionView.delegate = self
         cell.collectionView.reloadData()
         cell.collectionView.tag = indexPath.row
         cell.playerNameLabel.text = players[indexPath.row].name
-        
+              
         let hand = players[indexPath.row].currentHand
         
         if indexPath.row == 0 && round < players.count {

@@ -30,10 +30,14 @@ class CollectionTableViewCell: UITableViewCell {
 }
 
 // - MARK: - Collection View Data Source
-extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         playersHand.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 170.8775877587759, height: 216)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,22 +47,10 @@ extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         
         
         
-        
         if collectionView.tag == 0 && indexPath.row == 1 && computersSecondCardChecker > 0  {
             cell.image.image = UIImage(named: "back")
         } else {
-                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-            //                  - Animation:
-//            cell.image.alpha = 0
-//            let originCoordinateX = cell.image.frame.origin.x
-//            let originCoordinateY = cell.image.frame.origin.y
-//            cell.image.frame.origin.x += 100
-//            cell.image.frame.origin.y += 200
-//            UIView.animate(withDuration: 2, delay: 0.5, options: .curveEaseInOut, animations: {
-//                cell.image.frame.origin.x = originCoordinateX
-//                cell.image.frame.origin.y = originCoordinateY
-//                cell.image.alpha = 1
-//            })
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
             
             let url = keys[playersHand[indexPath.row].image]
             if let url = url {

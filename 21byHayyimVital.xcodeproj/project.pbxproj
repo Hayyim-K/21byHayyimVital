@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6F2B87952A0C3418008D6AEC /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B87942A0C3418008D6AEC /* PresentViewController.swift */; };
+		6F3B1CB72A4B673700B1A351 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3B1CB62A4B673700B1A351 /* Animations.swift */; };
 		6F5C1DE62A269F3400A9DE01 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C1DE52A269F3400A9DE01 /* CardImageView.swift */; };
 		6F5C1DE82A26A35D00A9DE01 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5C1DE72A26A35D00A9DE01 /* ImageManager.swift */; };
 		6F5C1DEC2A26B39500A9DE01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F5C1DEB2A26B39500A9DE01 /* GoogleService-Info.plist */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		6F2B87942A0C3418008D6AEC /* PresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
+		6F3B1CB62A4B673700B1A351 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		6F5C1DE52A269F3400A9DE01 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		6F5C1DE72A26A35D00A9DE01 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		6F5C1DEB2A26B39500A9DE01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F3B1CB52A4B66C900B1A351 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				6F3B1CB62A4B673700B1A351 /* Animations.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		6F5C1DE92A26A83800A9DE01 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				6FDD222D2A17713500846510 /* Supporting Files */,
+				6F3B1CB52A4B66C900B1A351 /* Animation */,
 				6F5C1DE92A26A83800A9DE01 /* Services */,
 				6FDD222E2A17715200846510 /* Models */,
 				6FDD222F2A17716C00846510 /* View Controllers */,
@@ -235,6 +246,7 @@
 			files = (
 				6F5C1DE62A269F3400A9DE01 /* CardImageView.swift in Sources */,
 				6FCFFE262A095BBA00DB5872 /* ViewController.swift in Sources */,
+				6F3B1CB72A4B673700B1A351 /* Animations.swift in Sources */,
 				6F2B87952A0C3418008D6AEC /* PresentViewController.swift in Sources */,
 				6FCFFE222A095BBA00DB5872 /* AppDelegate.swift in Sources */,
 				6FCFFE3C2A09772600DB5872 /* CollectionViewCell.swift in Sources */,
