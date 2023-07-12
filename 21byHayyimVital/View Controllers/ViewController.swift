@@ -24,6 +24,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var enoughButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var rulseButton: UIButton!
     
     // - MARK: - Properties
     private var keysAndURLs = [String : URL]()
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate {
     // - MARK: - Override funcs
     override func viewDidLoad() {
         super.viewDidLoad()
+        pulsate(for: rulseButton)
         tableView.isHidden = true
         preparetion()
     }
@@ -171,6 +173,9 @@ class ViewController: UIViewController, UICollectionViewDelegate {
         }
         
     }
+    @IBAction func rulseButtonHasPressed(_ sender: Any) {
+        showRulseAlert(title: "RULSE", message: rules)
+    }
 }
 
 
@@ -237,6 +242,20 @@ extension ViewController: GameOverViewControllerDelegate {
 
 // MARK: - Alert Controller
 extension ViewController {
+    
+    private func showRulseAlert(title: String,
+                           message: String,
+                           textField: UITextField? = nil) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            textField?.text = nil
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
     private func showAlert() {
         let presentVC = self.storyboard?.instantiateViewController(withIdentifier: "PresentViewController") as! PresentViewController
         presentVC.delegate = self

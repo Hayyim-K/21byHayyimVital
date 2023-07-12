@@ -213,7 +213,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21 by Hayyim Vital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbH-tM-k8k">
-                                <rect key="frame" x="16" y="59" width="398" height="33.666666666666657"/>
+                                <rect key="frame" x="16" y="59" width="360" height="33.666666666666657"/>
                                 <color key="backgroundColor" red="0.098039215690000001" green="0.26969068874217683" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -336,19 +336,33 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="qvb-MQ-baO"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-B1-6i0">
+                                <rect key="frame" x="380" y="59" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ubk-B1-6i0" secondAttribute="height" multiplier="1:1" id="Q8F-5a-Rk9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="info.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="rulseButtonHasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vs3-FC-edz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.33333333333333331" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ubk-B1-6i0" firstAttribute="leading" secondItem="pbH-tM-k8k" secondAttribute="trailing" constant="4" id="3xk-i7-bGc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ubk-B1-6i0" secondAttribute="trailing" constant="16" id="IEB-ni-Dtf"/>
                             <constraint firstItem="TqP-tv-CAM" firstAttribute="top" secondItem="pbH-tM-k8k" secondAttribute="bottom" id="KXZ-ZK-Pvy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TqP-tv-CAM" secondAttribute="trailing" id="M0k-cr-1gg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CfO-01-1nS" secondAttribute="bottom" constant="16" id="MX4-Vz-foc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pbH-tM-k8k" secondAttribute="trailing" constant="16" id="TrE-EG-vJ4"/>
                             <constraint firstItem="CfO-01-1nS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="X0x-yh-jCj"/>
                             <constraint firstItem="CfO-01-1nS" firstAttribute="top" secondItem="TqP-tv-CAM" secondAttribute="bottom" constant="16" id="ans-sp-CDH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CfO-01-1nS" secondAttribute="trailing" constant="16" id="dsf-B3-9xT"/>
                             <constraint firstItem="TqP-tv-CAM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ehK-Dy-dM4"/>
                             <constraint firstItem="pbH-tM-k8k" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jiE-dt-vPq"/>
+                            <constraint firstItem="ubk-B1-6i0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mah-Ju-6wK"/>
+                            <constraint firstItem="ubk-B1-6i0" firstAttribute="height" secondItem="TqP-tv-CAM" secondAttribute="height" multiplier="0.0460081" id="uwf-Xw-Rr7"/>
                             <constraint firstItem="pbH-tM-k8k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="xZx-oS-6jv"/>
                         </constraints>
                     </view>
@@ -357,12 +371,13 @@
                         <outlet property="enoughButton" destination="XJF-9U-oI6" id="ILO-jU-aHa"/>
                         <outlet property="infoLabel" destination="pbH-tM-k8k" id="kLh-SD-uWP"/>
                         <outlet property="moreButton" destination="2Ux-ao-pCu" id="QE3-Io-HOR"/>
+                        <outlet property="rulseButton" destination="ubk-B1-6i0" id="pkT-PF-TmB"/>
                         <outlet property="tableView" destination="TqP-tv-CAM" id="95U-Js-FTk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-189.25233644859813" y="72.570194384449252"/>
+            <point key="canvasLocation" x="-189.76744186046511" y="72.103004291845494"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="7tf-x2-cHz">
@@ -500,6 +515,7 @@
     </scenes>
     <resources>
         <image name="11♦️" width="441.5" height="555.5"/>
+        <image name="info.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
